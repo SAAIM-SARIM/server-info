@@ -29,6 +29,34 @@
         </ul>
     </div>
 </br>
+<div id="comments-section" style="max-width:500px;margin:30px auto 0 auto;padding:20px;background:#222;border-radius:8px;box-shadow:0 2px 8px #0002;">
+    <h2 style="color:#4caf50;">Comments</h2>
+    <div id="comments-list" style="margin-bottom:20px;"></div>
+    <textarea id="comment-input" rows="3" style="width:100%;padding:8px;border-radius:4px;border:1px solid #444;background:#333;color:#eee;resize:vertical;" placeholder="Add a public comment..."></textarea>
+    <button onclick="addComment()" style="margin-top:8px;padding:6px 16px;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;">Comment</button>
+</div>
+<script>
+function addComment() {
+    const input = document.getElementById('comment-input');
+    const list = document.getElementById('comments-list');
+    const text = input.value.trim();
+    if(text) {
+        const div = document.createElement('div');
+        div.style.marginBottom = '12px';
+        div.style.padding = '10px';
+        div.style.background = '#333';
+        div.style.borderRadius = '4px';
+        div.innerHTML = `<b>Anonymous</b><br>${escapeHtml(text)}`;
+        list.prepend(div);
+        input.value = '';
+    }
+}
+function escapeHtml(text) {
+    var map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+</script>
+</br>
 <div style="text-align:center; color: #888; font-size: 1.1em;">Made By : Saaim Saboor</div>
 </body>
 </html>
