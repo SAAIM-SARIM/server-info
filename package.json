@@ -1,0 +1,16 @@
+{
+  "name": "minecraft-server-info",
+  "version": "1.0.0",
+  "description": "An informational page for a Minecraft server.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build script not defined'"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
