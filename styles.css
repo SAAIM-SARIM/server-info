@@ -1,3 +1,53 @@
+/* Animated gradient border for button */
+.fancy-btn {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.fancy-btn::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    background: linear-gradient(90deg, #4caf50, #43e97b, #38f9d7, #4caf50);
+    background-size: 300% 300%;
+    border-radius: 10px;
+    z-index: -1;
+    filter: blur(2px);
+    animation: borderMove 3s linear infinite;
+}
+@keyframes borderMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Animated underline for h2 */
+h2 {
+    position: relative;
+    display: inline-block;
+    color: #43e97b;
+    margin-bottom: 12px;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4caf50, #43e97b, #38f9d7);
+    border-radius: 2px;
+    margin-top: 4px;
+    animation: underlineMove 2s linear infinite alternate;
+}
+@keyframes underlineMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Neon glow for important text */
+.neon {
+    color: #a0d6a0;
+    text-shadow: 0 0 1px #43e97b, 0 0 2px #4caf50, 0 0 3px #38f9d7;
+    font-weight: bold;
+}
 body, html {
     height: 100%;
     margin: 0;
@@ -5,9 +55,16 @@ body, html {
 }
 body {
     font-family: Arial, sans-serif;
-    background: #222;
+    background: linear-gradient(135deg, #232526 0%, #4caf50 100%);
     color: #eee;
     margin: 40px;
+    min-height: 100vh;
+    animation: bgmove 10s ease-in-out infinite alternate;
+}
+
+@keyframes bgmove {
+    0% { background-position: 0% 50%; }
+100% { background-position: 100% 50%; }
 }
 .center-container {
     min-height: 100vh;
@@ -15,7 +72,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 3px solid #4caf50;
+    box-shadow: 0 0 24px 4px #4caf50aa, 0 2px 24px #0008;
+    border-radius: 24px;
+    background: rgba(34,34,34,0.92);
+    padding: 32px 24px 24px 24px;
+    margin-bottom: 32px;
+    margin-top: 32px;
+    transition: box-shadow 0.3s;
 }
 h1 {
     color: #4caf50;
+    text-shadow: 0 2px 12px #4caf50cc, 0 1px 2px #000a;
+    letter-spacing: 2px;
+}
+
+button {
+    transition: box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px #4caf5077;
+}
+button:hover {
+    box-shadow: 0 4px 24px #4caf50cc, 0 2px 8px #0006;
+    transform: scale(1.08) rotate(-2deg);
+    background: #43a047;
 }
