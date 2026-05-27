@@ -9,11 +9,12 @@
     position: absolute;
     top: -4px; left: -4px; right: -4px; bottom: -4px;
     background: linear-gradient(90deg, #4caf50, #43e97b, #38f9d7, #4caf50);
-    background-size: 300% 300%;
+    background-size: 200% 200%;
     border-radius: 10px;
     z-index: -1;
-    filter: blur(2px);
-    animation: borderMove 3s linear infinite;
+    filter: blur(1px);
+    opacity: 0.6;
+    animation: borderMove 6s linear infinite;
 }
 @keyframes borderMove {
     0% { background-position: 0% 50%; }
@@ -31,11 +32,11 @@ h2::after {
     content: '';
     display: block;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #4caf50, #43e97b, #38f9d7);
+    height: 3px;
+    background: linear-gradient(90deg, rgba(76,175,80,0.22), rgba(67,233,123,0.22), rgba(56,249,215,0.22));
     border-radius: 2px;
-    margin-top: 4px;
-    animation: underlineMove 2s linear infinite alternate;
+    margin-top: 6px;
+    animation: underlineMove 6s linear infinite alternate;
 }
 @keyframes underlineMove {
     0% { background-position: 0% 50%; }
@@ -44,9 +45,9 @@ h2::after {
 
 /* Neon glow for important text */
 .neon {
-    color: #a0d6a0;
-    text-shadow: 0 0 1px #43e97b, 0 0 2px #4caf50, 0 0 3px #38f9d7;
-    font-weight: bold;
+    color: #93b893;
+    text-shadow: 0 0 0.5px rgba(67,233,123,0.45), 0 0 1px rgba(76,175,80,0.35);
+    font-weight: 700;
 }
 body, html {
     height: 100%;
@@ -55,11 +56,12 @@ body, html {
 }
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #232526 0%, #4caf50 100%);
-    color: #eee;
-    margin: 40px;
+    background: linear-gradient(135deg, #1f2222 0%, #243427 100%);
+    color: #e6efe6;
+    margin: 28px;
     min-height: 100vh;
-    animation: bgmove 10s ease-in-out infinite alternate;
+    /* subtle static background to blend with content */
+    background-attachment: fixed;
 }
 
 @keyframes bgmove {
@@ -72,19 +74,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid #4caf50;
-    box-shadow: 0 0 24px 4px #4caf50aa, 0 2px 24px #0008;
-    border-radius: 24px;
-    background: rgba(34,34,34,0.92);
-    padding: 32px 24px 24px 24px;
-    margin-bottom: 32px;
-    margin-top: 32px;
+    border: 1px solid rgba(76,175,80,0.12);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    border-radius: 16px;
+    background: rgba(18,18,18,0.66);
+    padding: 28px 20px;
+    margin: 24px auto;
+    max-width: 980px;
     transition: box-shadow 0.3s;
 }
 h1 {
-    color: #4caf50;
-    text-shadow: 0 2px 12px #4caf50cc, 0 1px 2px #000a;
-    letter-spacing: 2px;
+    color: #57b857;
+    text-shadow: 0 1px 6px rgba(76,175,80,0.28);
+    letter-spacing: 1px;
 }
 
 button {
@@ -92,7 +94,216 @@ button {
     box-shadow: 0 2px 8px #4caf5077;
 }
 button:hover {
-    box-shadow: 0 4px 24px #4caf50cc, 0 2px 8px #0006;
-    transform: scale(1.08) rotate(-2deg);
-    background: #43a047;
+    box-shadow: 0 6px 18px rgba(76,175,80,0.18), 0 2px 8px rgba(0,0,0,0.6);
+    transform: scale(1.03) rotate(-1deg);
+    background: #3b8f3b;
 }
+
+/* Server cards */
+.server-cards { display:flex; gap:12px; justify-content:center; margin:14px 0; flex-wrap:wrap; }
+.card { background: rgba(255,255,255,0.02); padding:12px 16px; border-radius:10px; width:auto; min-width:140px; max-width:280px; text-align:center; box-shadow: inset 0 1px 0 rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.02); word-wrap: break-word; overflow-wrap: break-word; }
+.card-title { font-size:0.9em; color:rgba(174,230,174,0.95); margin-bottom:6px; font-weight:600;}
+.card-value { font-size:1.1em; color:#e6efe6; font-weight:700; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; }
+.status-dot { display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.03); }
+.status-online { background: linear-gradient(90deg,#4caf50,#43e97b); color:#042204; box-shadow:0 2px 10px rgba(67,233,123,0.12); }
+.status-offline { background: rgba(255,255,255,0.02); color:#bbb; border:1px solid rgba(255,255,255,0.02); }
+.heart-img { width:120px; opacity:0.9; }
+@media (max-width:700px){ .server-cards { flex-direction:column; align-items:center; } .card { width:80%; } }
+
+/* Crafting recipe section */
+.crafting-section h2 {
+    text-align: center;
+    color: #4caf50;
+    margin-top: 24px;
+}
+
+.crafting-section {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.crafting-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: #888;
+    font-size: 1.1em;
+}
+
+.heart-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Copy IP Button */
+#copyIpBtn {
+    padding: 6px 12px;
+    background: #3b8f3b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+#copyIpBtn:hover {
+    background: #2d6b2d;
+    transition: 0.3s;
+}
+
+/* utilities moved from inline styles */
+.ip-button-wrap { margin-top: 8px; }
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.clickme-btn {
+  padding: 10px 24px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.section-title {
+  text-align: center;
+  color: #4caf50;
+  margin-top: 24px;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ensure IP wraps inside card */
+.card-value {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* footer and small layout helpers */
+.footer {
+  text-align: center;
+  color: #888;
+  font-size: 1.1em;
+  margin-top: 16px;
+}
+
+/* Utility spacing */
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+
+/* Centering block used for neon/message areas */
+.center-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+
+/* Section headings */
+.section-title {
+    text-align: center;
+    color: #4caf50;
+    margin-top: 24px;
+}
+
+/* Crafting / image wrapper */
+.image-wrap {
+    text-align: center;
+    margin: 12px 0;
+}
+.image-wrap img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Copy button */
+#copyIpBtn {
+    padding: 6px 12px;
+    background: #3b8f3b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+#copyIpBtn:hover {
+    background: #2d6b2d;
+    transition: 0.2s;
+}
+
+/* Small layout fixes for cards */
+.card {
+    min-width: 180px;
+    max-width: 320px;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* footer & heart image */
+.footer {
+    text-align: center;
+    color: #888;
+    font-size: 1.05em;
+    margin-top: 8px;
+}
+.heart-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Utilities */
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+
+/* Neon / highlighted message */
+.neon {
+    color: #4caf50;
+    padding: 24px 32px;
+    border-radius: 16px;
+    font-size: 1.3em;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.18); /* subtle backing so it blends */
+}
+
+/* Click button container */
+.click-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Image wrapper */
+.image-wrap {
+    text-align: center;
+    margin: 12px 0;
+}
+.image-wrap img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: #888;
+    font-size: 1.05em;
+    margin-top: 8px;
+}
+.heart-img { max-width: 100%; height: auto; }

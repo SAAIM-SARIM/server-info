@@ -2,17 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAK SMP - Server Info</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="center-container">
         <h1>Welcome to PAK SMP!</h1>
-        <p>IP Address: <strong>PAKSMP.aternos.me</strong></p>
-        <p>Version: <strong>1.21.4</strong></p>
+        <div class="server-cards">
+            <div class="card">
+                <div class="card-title">IP</div>
+                <div class="card-value"><strong id="server-ip">PAKMCSMP.aternos.me</strong></div>
+                <div class="mt-8"><button id="copyIpBtn" class="fancy-btn">Copy IP</button></div>
+            </div>
+            <div class="card">
+                <div class="card-title">Version</div>
+                <div class="card-value">FOR ANY VERSION</div>
+            </div>
+        </div>
+        <!-- Connect button removed -->
         <h2>About</h2>
-        <div style="display:flex;justify-content:center;align-items:center;height:120px;">
-    <div class="neon" style="color:#4caf50;padding:24px 32px;border-radius:16px;font-size:1.3em;text-align:center;box-shadow:0 2px 12px #0003;max-width:600px;">
+        <div class="center-block">
+            <div class="neon" style="color:#4caf50;padding:24px 32px;border-radius:16px;font-size:1.3em;text-align:center;box-shadow:0 2px 12px #0003;max-width:600px;">
                 PAK SMP is a DEADLY Minecraft LIFSTEAL server for everyone! This server is hosted by aternos.<br>
                 This server contains whitelist.<br>
                 You should ask me to get whitelisted.<br>
@@ -20,7 +31,8 @@
                 <b>ENJOY!</b>
             </div>
         </div>
-        <h2>That You Can Do</h2>
+
+        <h2 class="section-title">That You Can Do</h2>
         <ul>
             <li>griefing</li>
             <li>Be respectful</li>
@@ -37,60 +49,102 @@
             <li>Using X-Ray</li>
             <li>Swearing</li>
         </ul>
-    </div>
-<br/>
-<div style="text-align:center; margin-bottom:10px;">
-    <button id="clickMeBtn" class="fancy-btn" style="padding:10px 24px; background:#4caf50; color:#fff; border:none; border-radius:6px; font-size:1.1em; cursor:pointer;">CLICK ME</button>
-</div>
-</div>
-<script>
-document.getElementById('clickMeBtn').onclick = function() {
-    // Show message
-    const msg = document.createElement('div');
-    msg.textContent = 'Thanks for visiting';
-    msg.style.position = 'fixed';
-    msg.style.top = '30%';
-    msg.style.left = '50%';
-    msg.style.transform = 'translate(-50%, -50%)';
-    msg.style.background = '#4caf50';
-    msg.style.color = '#fff';
-    msg.style.fontSize = '2em';
-    msg.style.padding = '20px 40px';
-    msg.style.borderRadius = '12px';
-    msg.style.zIndex = '1000';
-    document.body.appendChild(msg);
-    setTimeout(() => msg.remove(), 2000);
 
-    // Sprinkles/confetti - colorful circles
-    for(let i=0; i<60; i++) {
-        let sprinkle = document.createElement('div');
-        sprinkle.style.position = 'fixed';
-        sprinkle.style.top = '-40px';
-        // Random horizontal position
-        sprinkle.style.left = Math.random()*100 + 'vw';
-        let size = 12;
-        sprinkle.style.width = size + 'px';
-        sprinkle.style.height = size + 'px';
-        sprinkle.style.borderRadius = '50%';
-        sprinkle.style.background = `hsl(${Math.random()*360},80%,60%)`;
-        sprinkle.style.zIndex = '999';
-        sprinkle.style.opacity = '0.85';
-        // Random rotation
-        sprinkle.style.transform = `rotate(${Math.random()*360}deg)`;
-        // Random falling speed
-        let duration = 3500 + Math.random()*2000;
-        sprinkle.style.transition = `top ${duration}ms cubic-bezier(.4,1.7,.6,.9)`;
-        document.body.appendChild(sprinkle);
-        setTimeout(() => {
-            sprinkle.style.top = '100vh';
-        }, 50);
-        setTimeout(() => sprinkle.remove(), duration+300);
-    }
-}
-</script>
-<div style="text-align:center; color: #888; font-size: 1.1em;">Made By : Saaim Saboor</div>
-<div style="text-align:center; margin-top:16px;">
-    <img src="heart.png"  style="width:148px; height:auto; border-radius:12px; box-shadow:0 2px 8px #0002;">
-</div>
-</body>
-</html>
+        <br/>
+        <div class="click-container">
+            <button id="clickMeBtn" class="fancy-btn">CLICK ME</button>
+        </div>
+
+        <h2 class="section-title">HOW TO CRAFT HEARTS.</h2>
+        <div class="image-wrap">
+            <img src="crafting.png" class="crafting-img" alt="Crafting recipe" />
+        </div>
+
+        <h2 class="crafting-section">HOW TO REVIVE PLAYERS.</h2>
+        <div class="crafting-section">
+            <img src="revive.png" alt="Crafting recipe" />
+        </div>
+
+        <div class="footer">Made By : BROKEN_ABIDE</div>
+        <div class="image-wrap">
+            <img src="heart.png" class="heart-img" alt="Heart" />
+        </div>
+    </div>
+    
+
+<script>
+        document.getElementById('copyIpBtn').onclick = function() {
+            const ip = document.getElementById('server-ip').textContent;
+            const textArea = document.createElement('textarea');
+            textArea.value = ip;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast('IP copied to clipboard!');
+                }
+            } catch (err) {
+                showToast('Copy failed — select and copy');
+            }
+            textArea.remove();
+        };
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.background = '#4caf50';
+            toast.style.color = '#fff';
+            toast.style.padding = '12px 20px';
+            toast.style.borderRadius = '6px';
+            toast.style.fontSize = '0.95em';
+            toast.style.zIndex = '9999';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        document.getElementById('clickMeBtn').onclick = function() {
+            const msg = document.createElement('div');
+            msg.textContent = 'Thanks for visiting';
+            msg.style.position = 'fixed';
+            msg.style.top = '30%';
+            msg.style.left = '50%';
+            msg.style.transform = 'translate(-50%, -50%)';
+            msg.style.background = '#4caf50';
+            msg.style.color = '#fff';
+            msg.style.padding = '24px 32px';
+            msg.style.fontSize = '1.5em';
+            msg.style.borderRadius = '12px';
+            msg.style.zIndex = '9998';
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 3000);
+
+            for (let i = 0; i < 50; i++) {
+                const sprinkle = document.createElement('div');
+                sprinkle.style.position = 'fixed';
+                sprinkle.style.left = Math.random() * 100 + '%';
+                sprinkle.style.top = '-10px';
+                sprinkle.style.width = '8px';
+                sprinkle.style.height = '8px';
+                sprinkle.style.background = ['#4caf50', '#43e97b', '#38f9d7', '#ff6b6b', '#ffd93d'][Math.floor(Math.random() * 5)];
+                sprinkle.style.borderRadius = '50%';
+                sprinkle.style.zIndex = '9997';
+                sprinkle.style.pointerEvents = 'none';
+                document.body.appendChild(sprinkle);
+
+                const duration = 3 + Math.random() * 2;
+                const animation = sprinkle.animate([
+                    { transform: 'translateY(0px) rotateZ(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 10}px) rotateZ(360deg)`, opacity: 0 }
+                ], duration * 1000);
+
+                animation.onfinish = () => sprinkle.remove();
+            }
+        };
+    </script>
+
+    </body>
+    </html>
